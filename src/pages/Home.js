@@ -11,6 +11,9 @@ import {
     Button, 
     Typography
 } from '@material-ui/core'
+import winner from '../audios/winner.mp3'
+import candy from '../audios/candy.mp3'
+import navigate from '../audios/navigate.mp3'
 
 
 export const Home = ({ concatData }) => { 
@@ -35,7 +38,7 @@ export const Home = ({ concatData }) => {
                         <a className={classes.ancla} href="/">Volver a Jugar</a>
                     </Button>
                     <Sound 
-                        url={'http://sonidosmp3gratis.com/sounds/bites-ta-da-winner.mp3'} 
+                        url={winner} 
                         playStatus={Sound.status.PLAYING}
                     />
                 </div>
@@ -44,13 +47,13 @@ export const Home = ({ concatData }) => {
         return <>
         <Header intentos={intentos}/>
 
-        <Container className={classes.div} >
+        <div className={classes.div} >
         <Grid container className={media} justify="center" spacing={spacing}>
              {
                 allData.map((result, index) => {
                     const Sound = sound 
-                        ? 'http://sonidosmp3gratis.com/sounds/candy-crush-bomba-color.mp3' 
-                        : 'http://sonidosmp3gratis.com/sounds/SD_NAVIGATE_53.mp3' 
+                        ? candy
+                        : navigate
 
                     return <Characters
                         key={index}
@@ -62,7 +65,7 @@ export const Home = ({ concatData }) => {
                 })
             }
         </Grid>
-        </Container>
+        </div>
         </>
     }
 }

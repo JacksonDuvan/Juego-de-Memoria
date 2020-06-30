@@ -1,15 +1,21 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 
 module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: '/'
     },
     resolve: {
         extensions: ['.js']
+    },
+    optimization: {
+        minimize: true,
+        minimizer: [new TerserPlugin()]
     },
     module: {
         rules: [
@@ -26,9 +32,7 @@ module.exports = {
             {
                 test: /\.(png|jpe?g|gif|mp3)$/i,
                 use: [
-                    {
-                        loader: 'file-loader',
-                    }
+                    'file-loader' 
                 ]
             },
             {
@@ -42,9 +46,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            inject: true,
             template: 'public/index.html',
-            filename: './index.html'
         }),
         new MiniCSSExtractPlugin()
     ]

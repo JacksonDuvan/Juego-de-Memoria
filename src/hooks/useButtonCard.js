@@ -3,7 +3,7 @@ import Sound from 'react-sound'
 
 export const useButtonCard = (compareCard, id, card) => {
     const [isFlipped, setIsFlipped] = useState(false)
-    const [playing, setPlaying] = useState()
+    const [playing, setPlaying] = useState(Sound.status.STOPED)
 
     const buttonCard = () => { 
         compareCard(id)

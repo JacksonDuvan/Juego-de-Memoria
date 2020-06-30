@@ -6,7 +6,7 @@ export const useStyles = makeStyles(theme => ({
         width: 800,
     },
     container1:{
-        width: 300,
+        width: 350,
     },
     ancla: {
         color: '#fff',
@@ -40,7 +40,7 @@ export const useStyles = makeStyles(theme => ({
         paddingLeft: theme.spacing(3),
     },
     title:{
-        padding: '0 30px',
+        padding: '0 20px',
     },
     imgRickMorty:{
         width: 160,
@@ -57,14 +57,14 @@ export const useStyles = makeStyles(theme => ({
     },
     item2:{
         borderRadius: 5,
-        height: 60,
-        width: 60,
+        height: 70,
+        width: 70,
         cursor: "pointer"
     },
 
     // App
     loading: {
-        color: 'white',
+        color: theme.palette.success.main,
     },
     progress:{
         display: "flex",

@@ -22,7 +22,7 @@ export const App = () => {
     const classes = useStyles()
 
     if(loading) return <div className={classes.progress}>
-        <CircularProgress className={classes.loading} />
+        <CircularProgress color="secondary" size={60}/>
     </div>
 
     const { results } = data.characters
