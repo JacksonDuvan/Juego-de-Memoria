@@ -27,49 +27,57 @@ export const Home = ({ concatData }) => {
         compareCard 
     } = useCompareCard(concatData)
     const { media, spacing, fontsize } = useResponsive(classes)
-
+    console.log('counter >>',counter);
     if(counter === 8){
-            return(
-                <div className={classes.play}> 
-                    <Typography variant={fontsize} gutterBottom className={classes.ancla}>
-                        Lo has logrado en {intentos} intentos.
-                    </Typography>
-                    <Button variant="contained" color="secondary" className={classes.btn}>
-                        <a className={classes.ancla} href="/">Volver a Jugar</a>
-                    </Button>
-                    <Sound 
-                        url={winner} 
-                        playStatus={Sound.status.PLAYING}
-                    />
-                </div>
-            )
-    }else{
-        return <>
-        <Header intentos={intentos}/>
+        return(
+            <div className={classes.play}> 
+                <Typography variant={fontsize} gutterBottom className={classes.ancla}>
+                    Lo has logrado en {intentos} intentos.
+                </Typography>
+                <Button variant="contained" color="secondary" className={classes.btn}>
+                    <a className={classes.ancla} href="/">Volver a Jugar</a>
+                </Button>
+                <Sound 
+                    url={winner} 
+                    playStatus={Sound.status.PLAYING}
+                />
+            </div>
+        )
+    }
+  
+    const SoundCard = sound 
+        ? candy
+        : navigate
+    return (
+        <>
+            <Header intentos={intentos}/>
 
-        <div className={classes.div} >
-        <Grid container className={media} justify="center" spacing={spacing}>
+            <div className={classes.div} >
+                <Grid 
+                    // container 
+                    className={classes.grid} 
+                    spacing={spacing} 
+                >
+
              {
-                allData.map((result, index) => {
-                    const Sound = sound 
-                        ? candy
-                        : navigate
+                allData.map((result) => {
+                   return result.map((item, index) => {
 
                     return <Characters
-                        key={index}
-                        {...result}
-                        card={card}
-                        compareCard={compareCard}
-                        urlSound={Sound}
-                    />
-                })
-            }
-        </Grid>
-        </div>
+                            key={index}
+                            {...item}
+                            card={card}
+                            compareCard={compareCard}
+                            urlSound={SoundCard}
+                        />
+                    })
+                    })
+                }
+                </Grid>
+            </div>
         </>
-    }
+    )
 }
-
 
 
 

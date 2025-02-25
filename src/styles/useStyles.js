@@ -2,6 +2,15 @@ import { makeStyles } from '@material-ui/core'
 
 export const useStyles = makeStyles(theme => ({
     // Home
+    grid:{
+        display: "grid",
+        gridTemplateColumns: "repeat(4, 1fr)",
+        gridTemplateRows: "repeat(4, 1fr)",
+        // gap: 2,
+    },
+    gridItem:{
+        margin: "5px",
+    },
     container:{
         width: 800,
     },

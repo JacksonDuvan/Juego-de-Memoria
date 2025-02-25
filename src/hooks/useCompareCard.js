@@ -13,13 +13,15 @@ export const useCompareCard = (data) => {
             if(card.length === 2){
                 setIntentos(intentos + 1)
                 if(card[0] === card[1]){
-                    let newData = allData.filter(item => item.id !== id)
+                    const newData = allData.map((row) => {  
+                        return row.map((item) => item.id === id ? { ...item, found: true } : item)
+                    })
                     setSound(true)
                     setCounter(counter + 1)
+                    setAllData(newData)
                     setTimeout(() => {
-                        setAllData(newData)
                         setSound(false)
-                    }, 2000)
+                    }, 1000)
                     return card.length = 0
                 }else{
                     return card.length = 0
